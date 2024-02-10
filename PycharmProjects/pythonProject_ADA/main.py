@@ -31,9 +31,28 @@ def RPS_game(player1, player2):
         else:
             print("Player2 WIN!")
 
-player1 = choose_rps()
-print(player1)
-player2 = choose_rps()
-print(player2)
+def play_again():
+    user_input = input("Would you like to play again? Yes or No\n")
+    #r = random.choice([True, False])
+    if user_input.lower() == "yes":
+        return True
+    elif user_input.lower() == "no":
+        return False
+    else:
+        print("Invalid input")
+        return False
 
-RPS_game(player1, player2)
+def run_game():
+    play = True
+    while play:
+        player1 = choose_rps()
+        print(player1)
+        player2 = choose_rps()
+        print(player2)
+
+        RPS_game(player1, player2)
+        play = play_again()
+        print("\n--------------\n")
+    print("Thank you for playing!")
+
+run_game()
