@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pythonProject_ADA.iml" filepath="$PROJECT_DIR$/.idea/pythonProject_ADA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ADA_Rock,_Paper,_Scissors.iml" filepath="$PROJECT_DIR$/.idea/ADA_Rock,_Paper,_Scissors.iml" />
     </modules>
   </component>
 </project>
