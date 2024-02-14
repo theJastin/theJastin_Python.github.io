@@ -1,13 +1,11 @@
 def twoSum(nums, target):
     n = len(nums)
-    List = []
 
     for i in range(n):
-        if (nums[i] + nums[i + 1] == target):
-            List.append(i)
-            List.append(i + 1)
-            return List
+        for j in range(i+1, n):
+            if (nums[i] + nums[j] == target):
+                return [i,j]
 
-nums = [2,7,11,15]
-target = 9
+nums = [2,5,5,11]
+target = 10
 print(twoSum(nums,target))
