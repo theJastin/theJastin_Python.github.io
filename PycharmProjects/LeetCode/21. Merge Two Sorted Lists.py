@@ -21,16 +21,16 @@ def mergeTwoLists(list1, list2):
         """
         node = ListNode()
         head = node
-        while list1 or list2:
-            v = ChooseNode(list1,list2)
+        while list1 and list2:
             node.next = ListNode()
             node = node.next
-            if v == 1:
+            if list1.val < list2.val:
                 node.val = list1.val
                 list1 = list1.next
-            elif v ==2:
+            else:
                 node.val = list2.val
                 list2 = list2.next
+        node.next = list1 or list2
         return head.next
 
 def createLL(list):
@@ -51,6 +51,6 @@ def print_LL(node):
 
 list1LL = createLL([1,2,4])
 list2LL = createLL([1,3,4])
-print_LL(list1LL)
-print_LL(list2LL)
+# print_LL(list1LL)
+# print_LL(list2LL)
 print_LL(mergeTwoLists(list1LL, list2LL))
