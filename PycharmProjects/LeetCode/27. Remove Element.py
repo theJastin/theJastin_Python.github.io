@@ -4,8 +4,6 @@ def removeElement(nums, val):
         if i != val:
             nums[k] = i
             k += 1
-        else:
-            i = None
     return k
 
 # Input: nums = [3,2,2,3], val = 3
