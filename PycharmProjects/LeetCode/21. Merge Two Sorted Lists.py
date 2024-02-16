@@ -4,14 +4,6 @@ class ListNode(object):
         self.next = next
 
 # return which node to use
-def ChooseNode(node1, node2):
-    if not node1:
-        return 2
-    if not node2:
-        return 1
-    if node1.val > node2.val:
-        return 2
-    return 1
 
 def mergeTwoLists(list1, list2):
         """
