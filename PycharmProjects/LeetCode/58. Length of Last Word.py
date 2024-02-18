@@ -1,17 +1,20 @@
 def lengthOfLastWord(s):
-    words = s.split(" ")
-    return words[-1]
-    # last_word = ""
-    # i = -1
-    # while s[i] != " ":
-    #     last_word += s[i]
-    #     i -= 1
-    # last_word_convert = ""
-    # for i in range(-1, -len(last_word)):
-    #     last_word_convert += last_word[i]
-    # return last_word_convert
+    first_letter_ind = 0
+    word_len = 0
+    for i in range(len(s)-1, -1, -1):
+        if s[i] != " " and first_letter_ind == 0:
+            first_letter_ind = i
+            word_len += 1
+        elif s[i] != " " and first_letter_ind > 0:
+            word_len += 1
+        elif s[i] == " " and first_letter_ind > 0:
+            return word_len
+    if word_len == 0:
+        return -1
+    else:
+        return word_len
 
-# Input: s = "Hello World"
+        # Input: s = "Hello World"
 # Output: 5
 # Explanation: The last word is "World" with length 5.
 #
@@ -22,5 +25,5 @@ def lengthOfLastWord(s):
 # Input: s = "luffy is still joyboy"
 # Output: 6
 # Explanation: The last word is "joyboy" with length 6.
-s = "Hello World"
+s = "a"
 print(lengthOfLastWord(s))
