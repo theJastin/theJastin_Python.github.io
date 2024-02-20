@@ -1,4 +1,5 @@
 import pyspark
+from pyspark.sql.functions import round
 
 ## create spark session
 spark = pyspark.sql.SparkSession \
@@ -25,18 +26,23 @@ def extract_WorkOrder_to_df():
         .option("dbtable", "[Production].[WorkOrder]") \
         .option("driver", "com.microsoft.sqlserver.jdbc.SQLServerDriver") \
         .load()
+
+    WorkOrder_df.drop("ScrapReasonId")
+    print(WorkOrder_df.show())
+
     return WorkOrder_df
 
 def transform_avgQty(WorkOrder_df, Product_df):
     ## transforming data
     AVGQty = WorkOrder_df.groupBy("ProductID").mean("OrderQty").withColumnRenamed("AVG(OrderQty)", "AVG_Qty")
 
-    print(AVGQty.show())
+    ##print(AVGQty.show())
 
-    JoinTb_df = Product_df.join(AVGQty, Product_df.ProductID == AVGQty.ProductID).select(AVGQty.ProductID, AVGQty.AVG_Qty, Product_df.Name)
-    JoinTb_df.drop("ProductID")
+    JoinTb_df = Product_df.join(AVGQty, Product_df.ProductID == AVGQty.ProductID).select(AVGQty.ProductID, AVGQty.AVG_Qty, Product_df.Name).orderBy("Name")
+    ##JoinTb_df.drop("ProductID")
+    JoinTb_df_new = JoinTb_df.withColumn("AVG_Qty2", round(JoinTb_df.AVG_Qty, 2))
 
-    ##print(JoinTb_df.show())
+    ##print(JoinTb_df_new.show())
 
     return JoinTb_df
 
