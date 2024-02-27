@@ -4,51 +4,32 @@
 # 1 + 1 = 0, carry 1
 def addBinary(a, b):
     result = ""
+    sum = 0
     # carry - carrying the one
     carry = 0
-    # def the shortest string and longest string
-    # aa - longest
-    # bb - shortest
     if len(a) > len(b):
-        aa = a[::-1]
-        bb = b[::-1]
+        bb = b.zfill(len(a))
+        aa = a
     else:
-       aa = b[::-1]
-       bb = a[::-1]
-
-    for i in range(len(aa)):
-        if i < (len(bb)):
-            if carry == 0:
-                if aa[i] == bb[i] == '0':
-                    result = '0' + result
-                elif aa[i] == bb[i] == '1':
-                    result = '0' + result
-                    carry = 1
-                else:
-                    result = '1' + result
-            else:
-                if aa[i] == bb[i] == '0':
-                    result = '1' + result
-                    carry = 0
-                elif aa[i] == bb[i] == '1':
-                    result = '1' + result
-                    carry = 1
-                else:
-                    result = '0' + result
-                    carry = 1
-        else:
-            if aa[i] == str(carry) == '0':
-                result = '0' + result
-            elif aa[i] == str(carry) == '1':
-                result = '0' + result
+        aa = a.zfill(len(b))
+        bb = b
+    for i in range(len(aa)-1, -1, -1):
+        x = int(aa[i])
+        y = int(bb[i])
+        sum = carry + x + y
+        if sum > 1:
+            if sum == 2:
+                result += '0'
                 carry = 1
             else:
-                result = '1' + result
-                carry = 0
+                result += '1'
+                carry = 1
+        else:
+            result += str(sum)
+            carry = 0
     if carry == 1:
-        result = '1' + result
-    return result
-
+        result += '1'
+    return result[::-1]
 
 # Example 1:
 # Input: a = "11", b = "1"
@@ -62,6 +43,6 @@ def addBinary(a, b):
 # b = "10111"
 # Expected = "1001001"
 
-a = "110010"
-b = "10111"
+a = "1010"
+b = "1011"
 print(addBinary(a, b))
