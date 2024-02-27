@@ -14,9 +14,7 @@ def addBinary(a, b):
         aa = a.zfill(len(b))
         bb = b
     for i in range(len(aa)-1, -1, -1):
-        x = int(aa[i])
-        y = int(bb[i])
-        sum = carry + x + y
+        sum = carry + int(aa[i]) + int(bb[i])
         if sum > 1:
             if sum == 2:
                 result += '0'
