@@ -1,11 +1,28 @@
-def plusOne(digits):
-    for i in range(len(digits)-1, -1, -1):
-        digits[i] +=1
-        if digits[i] != 10:
-            return digits
-        else:
-            digits[i] = 0
-    return [1] + digits if digits[0] == 0 else digits
+def plusOne(input):
+    # i - index of element in the input list
+    i = len(input) - 1
+    # num - value of element in the input list
+    num = input[i]
+    # c - carrying the one
+    c = 0
 
-digits = [2,1,9,9,9,9]
-print(plusOne(digits))
+    if input[i] != 9:
+        input[i] += 1
+    else:
+        c = 1
+        while c == 1:
+            input[i] = 0
+            if i > 0:
+                if input[i - 1] != 9:
+                    input[i - 1] = input[i - 1] + 1
+                    c = 0
+                else:
+                    i -= 1
+            else:
+                input.insert(0, 1)
+                c = 0
+
+    return input
+
+input = [2, 1, 9, 9, 9, 9]
+print(plusOne(input))
