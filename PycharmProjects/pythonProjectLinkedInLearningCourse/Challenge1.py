@@ -17,6 +17,7 @@ msft = Stock("MSFT", 342.0, "Microsoft Corp")
 goog = Stock("GOOG", 135.0, "Google Inc")
 meta = Stock("META", 275.0, "Meta Platforms Inc")
 amzn = Stock("AMZN", 135.0, "Amazon Inc")
+
 print(msft.getDescription())
 print(goog.getDescription())
 print(meta.getDescription())
