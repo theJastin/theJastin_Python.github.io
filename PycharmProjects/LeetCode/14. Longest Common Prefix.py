@@ -1,3 +1,4 @@
+# 14. Longest Common Prefix solution
 def longestCommonPrefix(strs):
     # sort strs lexicographic
     strs.sort()
@@ -10,43 +11,24 @@ def longestCommonPrefix(strs):
                 return common_prefix
         common_prefix += current_char
     return common_prefix
-    # if (i > 0):
-    #     return first[0:i]
-    # elif (i == 0 and match == True):
-    #     return first[0]
-    # else:
-    #     return ""
-    return first[i]
-    # match = False
-    # commonstr = ""
-    # i = 0
-    # j = 0
-    # while i < len(strs[0]):
-    #     j = 0
-    #     while j < len(strs):
-    #         if len(strs[j]) > i:
-    #             v = strs[j][i]
-    #             if v == strs[0][i]:
-    #                 j += 1
-    #                 match = True
-    #             else:
-    #                 match = False
-    #                 break
-    #         else:
-    #             match = False
-    #             break
-    #     if match == True:
-    #         i += 1
-    #     else:
-    #         break
-    #
-    # if (i == 0 and match == False):
-    #     return ""
-    # elif (i == 0 and match == True):
-    #     return strs[0][0]
-    # elif i > 0:
-    #     return strs[0][0:i]
-
 
 strs = ["a"]
 print(longestCommonPrefix(strs))
+
+# problem
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Example 1:
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+ 
+Constraints:
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters.
