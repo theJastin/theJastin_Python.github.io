@@ -3,19 +3,13 @@
 def mySqrt(x):
     low = 0
     high = 65536
-    mid = high//2
     while (low < high):
-        ll = list[mid-1]
-        if ll == x:
-            return mid
-        elif x < ll:
-            high = mid
-            mid = (high- low)//2
-        elif x > ll:
+        mid = (low + high + 1)//2
+        if mid * mid > x:
+            high = mid - 1
+        else:
             low = mid
-            mid = low + (high - low)//2
-        if mid == low or mid == high or mid == 0:
-            return low
+    return low
 
 x = 2147395599
 print(mySqrt(x))
