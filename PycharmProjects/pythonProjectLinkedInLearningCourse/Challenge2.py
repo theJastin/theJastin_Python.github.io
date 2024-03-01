@@ -10,13 +10,13 @@ class Asset(ABC):
 class Bond(Asset):
     def __init__(self, description, duration, b_yield, price):
         super().__init__(price)
-
         self.description = description
         self.duration = duration
         self.b_yield = b_yield
 
     def getDescription(self):
-        return f'{self.description}: {self.duration}yr : Sprice : {self.b_yield}%'
+        return f'{self.description}: {self.duration}yr : ${self.price} : {self.b_yield}%'
+
 class Stock(Asset):
     def __init__(self, ticker, price, company):
         super().__init__(price)
@@ -47,10 +47,10 @@ print(goog.getDescription())
 print(meta.getDescription())
 print(amzn.getDescription())
 
-us30yr = Bond(95.31, "30 Year US Treasure", 30, 4.38)
-us20yr = Bond(96.31, "20 Year US Treasure", 30, 4.28)
-us10yr = Bond(94.31, "10 Year US Treasure", 30, 4.58)
-us5yr = Bond(98.31, "5 Year US Treasure", 30, 4.98)
+us30yr = Bond( "30 Year US Treasure", 30, 4.38, 95.31)
+us20yr = Bond("20 Year US Treasure", 20, 4.28, 96.41)
+us10yr = Bond("10 Year US Treasure", 10, 4.58, 93.15)
+us5yr = Bond("5 Year US Treasure", 5, 4.98, 98.4)
 
 print(us30yr.getDescription())
 print(us20yr.getDescription())

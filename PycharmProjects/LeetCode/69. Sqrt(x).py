@@ -1,15 +1,23 @@
 # 69. Sqrt(x) solution
+# Binary Search Algorithm
 def mySqrt(x):
-    i = 1
-    remainder = x
-    while remainder != 0:
-        remainder = x-i*i
-        if remainder < 0:
-            return i-1
-        i +=1
-    return i-1
+    low = 0
+    high = 65536
+    mid = high//2
+    while (low < high):
+        ll = list[mid-1]
+        if ll == x:
+            return mid
+        elif x < ll:
+            high = mid
+            mid = (high- low)//2
+        elif x > ll:
+            low = mid
+            mid = low + (high - low)//2
+        if mid == low or mid == high or mid == 0:
+            return low
 
-x = 225
+x = 2147395599
 print(mySqrt(x))
 
 # problem
