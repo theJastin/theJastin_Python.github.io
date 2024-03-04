@@ -1,11 +1,11 @@
 # i - second
-# request - list of requests
-
-request_list = ["URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1"]
-request_list1 = ["URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1"]
-# i = 9
 # limit = 2
 # window = 5
+# request - list of requests / 1 item every second
+request_list = ["URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1"]
+request_list1 = ["URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1", "URL2", "URL1", "URL2", "URL3", "URL1", "URL1", "URL8", "URL9", "URL1", "URL1"]
+
+# verifies if URL good to go or rejected
 def Verify(request_list, i, limit, window):
     URL = request_list[i]
     url_limit = 0
@@ -18,6 +18,7 @@ def Verify(request_list, i, limit, window):
                 url_limit += 1
     return url_limit < limit
 
+# loop through the list of requests
 def RateLimiter(request_list):
     result = []
     for i in range(len(request_list)):
