@@ -1,14 +1,14 @@
 # 70. Climbing Stairs solution
 
-def climbStairs(n,map):
-    # map to memorise already calculated results to reduce time complexity
-    if n in map:
-        return map[n]
-    map[n] = climbStairs(n-2,map) + climbStairs(n-1,map)
+def climbStairs(n):
+    # bottom up
+    map = [1,1]
+    for i in range(2, n+1):
+        map.append(map[i-1] + map[i-2])
     return map[n]
 
-n = 45
-print(climbStairs(n, {0:1, 1:1}))
+n = 38
+print(climbStairs(n))
 
 # problem
 """
