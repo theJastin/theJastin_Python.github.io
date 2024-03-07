@@ -2,10 +2,12 @@
 
 def climbStairs(n):
     # bottom up
-    map = [1,1]
+    prev = 1 # f(0)
+    cur = 1 # f(1)
     for i in range(2, n+1):
-        map.append(map[i-1] + map[i-2])
-    return map[n]
+        cur += prev
+        prev = cur-prev
+    return cur
 
 n = 38
 print(climbStairs(n))
