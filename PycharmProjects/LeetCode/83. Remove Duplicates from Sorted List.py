@@ -1,8 +1,8 @@
 # 83. Remove Duplicates from Sorted List
 
 class listNode:
-    def __init__(self, value = 0, next = None):
-        self.value = value
+    def __init__(self, val = 0, next = None):
+        self.val = val
         self.next = next
 def createLL(list):
     listLL = listNode()
@@ -14,24 +14,20 @@ def createLL(list):
     return head.next
 def printLL(node):
     while node:
-        print(node.value)
+        print(node.val)
         node = node.next
 def deleteDuplicates(head):
     res_list = head
     node = head
-    while node:
-        nodenext = node.next
-        if nodenext:
-            if node.value == nodenext.value:
-                node.next = nodenext.next
+    if head:
+        while node.next:
+            if node.val == node.next.val:
+                node.next = node.next.next
             else:
                 node = node.next
-        else:
-            node.next = None
-            node = node.next
     return res_list
 
-LL = createLL([1,1,2])
+LL = createLL([1,1,2,3,3])
 # printLL(LL)
 printLL(deleteDuplicates(LL))
 """
