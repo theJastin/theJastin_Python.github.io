@@ -1,20 +1,19 @@
 #3005. Count Elements With Maximum Frequency
 def maxFrequencyElements(nums):
+    if not nums:
+        return 0
     total = 0
     frequency = []
     for i in range(max(nums)+1):
         frequency.append(0)
     for n in nums:
         frequency[n] += 1
-    frequency.sort()
-    max_frequency = frequency[-1]
-    i = len(frequency)-1
-    while frequency[i] == max_frequency:
-        total += frequency[i]
-        i -= 1
-    return total
+    max_frequency = max(frequency)
+    for num in frequency:
+        total += 1 if num == max_frequency else 0
+    return total * max_frequency
 
-nums = [1,2,2,3,1,4]
+nums = []
 print(maxFrequencyElements(nums))
 """
 You are given an array nums consisting of positive integers.

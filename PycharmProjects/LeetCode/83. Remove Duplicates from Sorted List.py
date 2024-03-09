@@ -17,14 +17,15 @@ def printLL(node):
         print(node.val)
         node = node.next
 def deleteDuplicates(head):
+    if not head:
+        return head
     res_list = head
     node = head
-    if head:
-        while node.next:
-            if node.val == node.next.val:
-                node.next = node.next.next
-            else:
-                node = node.next
+    while node.next:
+        if node.val == node.next.val:
+            node.next = node.next.next
+        else:
+            node = node.next
     return res_list
 
 LL = createLL([1,1,2,3,3])
