@@ -7,19 +7,11 @@ class TreeNode(object):
         self.right = right
 
 def isSameTree(p, q):
-    same = False
     if p is None and q is None:
         return True
-    if (p is None and q is not None) or (p is not None and q is None):
+    if p is None or q is None:
         return False
-    same = isSameTree(p.left, q.left)
-    if not same:
-        return False
-    same = True if p.val == q.val else False
-    if not same:
-        return same
-    same = isSameTree(p.right, q.right)
-    return same
+    return p.val == q.val and isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 
 # p = [1,2,3], q = [1,2,3]
 p2 = TreeNode(-5)
@@ -30,7 +22,7 @@ q2 = TreeNode(-8)
 # q3 = TreeNode(3)
 qqq = TreeNode(0, q2, None)
 
-print(isSameTree(ppp,qqq))
+print(isSameTree(ppp, qqq))
 """
 Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
